@@ -1,0 +1,18 @@
+.moduleButton {
+  background-color: rgb(0, 55, 128);
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.moduleButton:hover {
+  background-color: rgb(0, 75, 178);
+}
+
+.moduleButton:active {
+  background-color: rgb(0, 35, 78);
+  scale: 98%;
+}

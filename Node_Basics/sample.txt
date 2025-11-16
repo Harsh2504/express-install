@@ -1,0 +1,2 @@
+This is a sample file content for fs.readFile() program.
+This is some sample text for stream reading in Node.js.

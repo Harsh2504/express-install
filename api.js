@@ -56,7 +56,7 @@ app.get("/", (req, res) => {
   });
 });
 
-app.get("/program/:id", (req, res) => {
+app.get("/:id", (req, res) => {
   const { id } = req.params;
   const programId = parseInt(id);
 
@@ -225,5 +225,5 @@ app.listen(PORT, "0.0.0.0", () => {
   console.log(`Listening on port ${PORT}..`);
   console.log(`API is running at http://localhost:${PORT}`);
   console.log(`Accessible from any IP on port ${PORT}`);
-  console.log(`Get a program at http://localhost:${PORT}/program/:id (1-27)`);
+  console.log(`Get a program at http://localhost:${PORT}/:id (1-27)`);
 });

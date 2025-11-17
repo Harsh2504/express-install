@@ -7,6 +7,8 @@ function RegistrationForm() {
     password: ""
   });
 
+  const [submittedData, setSubmittedData] = useState(null);
+
   const handleChange = (event) => {
     setFormData({
       ...formData,
@@ -16,9 +18,7 @@ function RegistrationForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert(
-      `Registration Successful!\nName: ${formData.name}\nEmail: ${formData.email}`
-    );
+    setSubmittedData(formData);
   };
 
   return (
@@ -61,6 +61,30 @@ function RegistrationForm() {
 
         <button type="submit">Register</button>
       </form>
+
+      {/* Display submitted data on screen */}
+      {submittedData && (
+        <div
+          style={{
+            marginTop: "30px",
+            padding: "15px",
+            border: "2px solid green",
+            backgroundColor: "#d4edda",
+            borderRadius: "5px"
+          }}
+        >
+          <h3 style={{ color: "green" }}>✓ Registration Successful!</h3>
+          <p>
+            <strong>Name:</strong> {submittedData.name}
+          </p>
+          <p>
+            <strong>Email:</strong> {submittedData.email}
+          </p>
+          <p>
+            <strong>Password:</strong> {submittedData.password}
+          </p>
+        </div>
+      )}
     </div>
   );
 }

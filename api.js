@@ -30,7 +30,34 @@ app.use((req, res, next) => {
 
 app.use(morgan('dev'));
 
-// Helper function to read files
+// Array of troll messages
+const trollMessages = [
+  "Do it yourself! 😂",
+  "LMAO, you think I'm gonna help? 🤣",
+  "Nope! Try harder!",
+  "This is not for you! Go learn coding first!",
+  "Stop wasting my APIs! 💀",
+  "You call that a request? 🙈",
+  "Skill issue detected! 📉",
+  "Maybe Google knows? Try there! 🔍",
+  "Error 404: Your coding skills not found!",
+  "Nice try! But absolutely no! 🚫",
+  "This API hates you! 😈",
+  "Why are you even here? 👻",
+  "Your request has been denied! Deal with it! 😎",
+  "Imagine asking for help! Could never be me! 🤦",
+  "I'm too good for this! 🌟",
+  "Your code is bad and you should feel bad!",
+  "Congratulations! You've activated troll mode! 🎉",
+  "Bye Felicia! This ain't it! 👋",
+  "You've officially been roasted! 🔥",
+  "NOOOOPE! Keep trying though! 😂"
+];
+
+// Function to get random troll message
+const getTrollMessage = () => {
+  return trollMessages[Math.floor(Math.random() * trollMessages.length)];
+};
 const readFile = (filePath) => {
   try {
     return fs.readFileSync(filePath, "utf8");
@@ -231,7 +258,12 @@ app.get("/:id", (req, res) => {
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).send(`Internal Server Error: ${err.message}`);
+  res.status(500).send(`${getTrollMessage()}\n\nError: ${err.message}`);
+});
+
+// 404 handler - TROLL MODE for any unmatched route
+app.use((req, res) => {
+  res.status(404).send(`${getTrollMessage()}\n\nRoute not found: ${req.path}`);
 });
 
 app.listen(PORT, "0.0.0.0", () => {

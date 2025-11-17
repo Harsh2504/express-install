@@ -6,7 +6,8 @@ class RegistrationForm extends Component {
     this.state = {
       name: "",
       email: "",
-      password: ""
+      password: "",
+      submitted: false
     };
   }
 
@@ -16,9 +17,7 @@ class RegistrationForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    alert(
-      `Registration Successful!\nName: ${this.state.name}\nEmail: ${this.state.email}`
-    );
+    this.setState({ submitted: true });
   };
 
   render() {
@@ -62,6 +61,30 @@ class RegistrationForm extends Component {
 
           <button type="submit">Register Now</button>
         </form>
+
+        {/* Display submitted data on screen */}
+        {this.state.submitted && (
+          <div
+            style={{
+              marginTop: "30px",
+              padding: "15px",
+              border: "2px solid green",
+              backgroundColor: "#d4edda",
+              borderRadius: "5px"
+            }}
+          >
+            <h3 style={{ color: "green" }}>✓ Registration Successful!</h3>
+            <p>
+              <strong>Name:</strong> {this.state.name}
+            </p>
+            <p>
+              <strong>Email:</strong> {this.state.email}
+            </p>
+            <p>
+              <strong>Password:</strong> {this.state.password}
+            </p>
+          </div>
+        )}
       </div>
     );
   }

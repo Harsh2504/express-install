@@ -1,38 +1,38 @@
-const net = require("net");
+// NET FUNCTIONS DEMONSTRATION
+// This file demonstrates 5 key functions of the Node.js Net module:
+// 1. net.createServer() - Create a TCP server
+// 2. server.listen() - Start listening for connections
+// 3. server.getConnections() - Get active connection count
+// 4. net.connect() - Create a TCP client connection
+// 5. socket.write() - Send data over socket
 
-// 1. Create TCP Server
-const server = net.createServer((socket) => {
-  console.log("Client connected.");
+// HOW TO RUN:
+// Terminal 1: node 15_net_server.js
+// Terminal 2: node 15_net_client.js
 
-  // 5. socket.write() - send data to client
-  socket.write("Welcome to Node TCP Server!\n");
+// FUNCTIONS USED:
+console.log(`
+Net Module Functions Demonstrated:
 
-  // Receive data from client
-  socket.on("data", (data) => {
-    console.log("Client says:", data.toString());
-  });
+1. net.createServer(callback)
+   - Creates a TCP server
+   - Callback receives socket object for each connection
 
-  socket.on("end", () => {
-    console.log("Client disconnected.");
-  });
-});
+2. server.listen(port, [host], [callback])
+   - Starts server listening on specified port
+   - Callback fires when server is ready
 
-// 2. server.listen() - start server
-server.listen(5000, () => {
-  console.log("Server running on port 5000");
+3. server.getConnections(callback)
+   - Gets the number of active connections
+   - Callback returns (err, count)
 
-  // 4. Create TCP client after server starts
-  const client = net.connect(5000, () => {
-    console.log("Client connected to server.");
+4. net.connect(options, [callback])
+   - Creates a TCP client connection
+   - Callback fires when connected
 
-    // Send message to server
-    client.write("Hello Server!");
-  });
-});
+5. socket.write(data, [encoding], [callback])
+   - Sends data to the socket
+   - Works for both server and client sockets
 
-// 3. server.getConnections() - check active connections
-setTimeout(() => {
-  server.getConnections((err, count) => {
-    console.log("Active connections:", count);
-  });
-}, 2000);
+See 15_net_server.js and 15_net_client.js for working examples.
+`);

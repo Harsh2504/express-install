@@ -6,7 +6,7 @@ console.error("2. This is console.error() - used for error messages");
 
 // 3. console.warn()
 console.warn("3. This is console.warn() - used for warnings");
-
+console.info("4. This is console.info() - used for informational messages");
 // 4. console.table()
 const student = [
   { name: "Harsh", age: 21 },

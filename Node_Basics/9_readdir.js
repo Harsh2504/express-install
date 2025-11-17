@@ -14,3 +14,6 @@ fs.readdir(folderPath, (err, files) => {
     console.log(file);
   });
 });
+
+
+// more functions 

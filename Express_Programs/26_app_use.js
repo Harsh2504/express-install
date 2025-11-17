@@ -37,6 +37,15 @@ app.get("/admin/dashboard", (req, res) => {
 });
 
 // -----------------------------
+// 6. Route that throws an error (handled by error middleware)
+// -----------------------------
+app.get("/error", (req, res, next) => {
+  // Pass error to next() to trigger error handling middleware
+  const err = new Error("This is a test error!");
+  next(err);
+});
+
+// -----------------------------
 // 5. Error handling middleware (Bonus)
 // -----------------------------
 app.use((err, req, res, next) => {

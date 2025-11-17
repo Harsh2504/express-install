@@ -10,3 +10,6 @@ fs.writeFile("output.txt", content, "utf8", (err) => {
   }
   console.log("File written successfully! Check output.txt");
 });
+
+
+//alternatives, append

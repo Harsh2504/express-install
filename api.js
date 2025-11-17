@@ -43,9 +43,9 @@ app.get("/", (req, res) => {
   res.json({
     message: "APL Practical Programs API",
     endpoints: {
-      programs: "/program/:id",
+      programs: "/:id",
       description: "Returns the source code for the specified program",
-      usage: "Use /program/:id to get plain text source code that you can copy-paste",
+      usage: "Use /:id to get plain text source code that you can copy-paste",
       notes: {
         react: "Programs 1-4 (includes related CSS files)",
         nodeBasics: "Programs 5-19",
@@ -125,7 +125,20 @@ app.get("/:id", (req, res) => {
       else if (programId === 12) fileName = "12_process_functions.js";
       else if (programId === 13) fileName = "13_os_functions.js";
       else if (programId === 14) fileName = "14_path_functions.js";
-      else if (programId === 15) fileName = "15_net_functions.js";
+      else if (programId === 15) {
+        const netFunctions = readFile(path.join(__dirname, "Node_Basics/15_net_functions.js"));
+        const netServer = readFile(path.join(__dirname, "Node_Basics/15_net_server.js"));
+        const netClient = readFile(path.join(__dirname, "Node_Basics/15_net_client.js"));
+        
+        if (netFunctions && netServer && netClient) {
+          res.setHeader("Content-Type", "text/plain; charset=utf-8");
+          let response = `========== 15_net_functions.js (Documentation) ==========\n\n${netFunctions}\n\n`;
+          response += `========== 15_net_server.js ==========\n\n${netServer}\n\n`;
+          response += `========== 15_net_client.js ==========\n\n${netClient}`;
+          res.send(response);
+          return;
+        }
+      }
       else if (programId === 16) fileName = "16_dns_functions.js";
       else if (programId === 17) fileName = "17_stream_read.js";
       else if (programId === 18) fileName = "18_stream_write.js";

@@ -16,3 +16,6 @@ console.log("5. Command Line Arguments:", process.argv);
 
 // 6. process.exit() - exit process (commented for safety)
 // process.exit();
+
+
+//proper functions find
